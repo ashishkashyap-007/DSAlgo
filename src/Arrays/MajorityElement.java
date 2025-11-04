@@ -3,9 +3,14 @@ package Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+   LeetCode Problem 169: Majority Element
+   https://leetcode.com/problems/majority-element/description/
+ */
+
 public class MajorityElement {
 
-    // Brute Force Approach
+    // Brute Force Approach O(n^2) time complexity and O(1) space complexity
     private static int majorityElementBruteForce(int[] nums) {
         int n = nums.length;
         for(int i=0;i<n;i++){
@@ -20,7 +25,7 @@ public class MajorityElement {
         return -1;
     }
 
-    // Better Approach using HashMap
+    // Better Approach using HashMap O(n) time complexity and O(n) space complexity
     private static int majorityElementBetter(int[] nums) {
         int n = nums.length;
         Map<Integer,Integer> freqMap = new HashMap<>();
@@ -35,7 +40,7 @@ public class MajorityElement {
         return -1;
     }
 
-    // Optimal Approach using Boyer-Moore Voting Algorithm
+    // Optimal Approach using Boyer-Moore Voting Algorithm O(n) time complexity and O(1) space complexity
     private static int majorityElementOptimal(int[] nums) {
         int n = nums.length;
 

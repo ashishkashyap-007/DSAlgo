@@ -1,6 +1,35 @@
 package hashing;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HighestOccurringElement {
+
+    private static int findHighestOccurringElementOptimal(int[] nums) {
+
+        int res = 0;
+        int maxCount = 0;
+        int n = nums.length;
+        Map<Integer, Integer> freq = new HashMap<>();
+
+        for (int num : nums) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+            int currentCount = entry.getValue();
+            int currentEle = entry.getKey();
+
+            if (currentCount == maxCount) {
+                res = Math.min(res, currentEle);
+            } else if (currentCount > maxCount) {
+                res = currentEle;
+                maxCount = currentCount;
+            }
+        }
+
+        return res;
+    }
 
     private static int findHighestOccurringElementNaive(int[] arr) {
         int res = -1;
@@ -27,5 +56,6 @@ public class HighestOccurringElement {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 2, 1, 3, 3, 2};
         System.out.println(findHighestOccurringElementNaive(arr));
+        System.out.println(findHighestOccurringElementOptimal(arr));
     }
 }
